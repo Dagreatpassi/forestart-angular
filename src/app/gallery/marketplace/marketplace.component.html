@@ -1,1 +1,19 @@
-<p>marketplace works!</p>
+<div>
+  <div class="text-center text-4xl">MARKETPLACE</div>
+  <div class="mt-8 ml-8 flex flex-row overflow-x-scroll">
+    <app-nft-card></app-nft-card>
+    <app-nft-card></app-nft-card>
+    <app-nft-card></app-nft-card>
+    <app-nft-card></app-nft-card>
+    <app-nft-card></app-nft-card>
+    <app-nft-card></app-nft-card>
+  </div>
+  <div class="mt-12 flex flex-row items-center justify-center mx-6">
+    <img [src]="imgSrc" />
+    <div class="ml-6 text-2xl">
+      An NFT is a non-fungible token, a unique digital representaiton of an
+      object.
+    </div>
+  </div>
+  <app-horizontal-divider></app-horizontal-divider>
+</div>

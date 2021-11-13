@@ -4,4 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-marketplace',
   templateUrl: './marketplace.component.html',
 })
-export class MarketplaceComponent {}
+export class MarketplaceComponent {
+  imgSrc = 'assets/img/mint.png';
+}

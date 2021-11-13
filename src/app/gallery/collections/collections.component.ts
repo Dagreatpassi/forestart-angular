@@ -4,4 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-collections',
   templateUrl: './collections.component.html',
 })
-export class CollectionsComponent {}
+export class CollectionsComponent {
+  imgSrc = 'assets/img/mint.png';
+}
