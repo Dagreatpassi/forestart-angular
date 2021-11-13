@@ -20,7 +20,7 @@ export class HomeComponent {
   amazoncircle2 = 'assets/img/amazoncircle2.png';
   cryptocircle = 'assets/img/cryptocircle.png';
   lbbw = 'assets/img/lbbw_logo.png';
-  logo = 'assets/img/logo.svg';
+  logo = 'assets/img/logo.png';
   marketPlaceImgs = [
     'assets/img/marketplaceimg1.png',
     'assets/img/marketplaceimg2.png',

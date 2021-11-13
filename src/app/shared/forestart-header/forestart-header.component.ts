@@ -10,7 +10,7 @@ import { AppRoutes } from '../../app-routes.enum';
 })
 export class ForestartHeaderComponent {
   AppRoutes = AppRoutes;
-  logoPath = 'assets/img/logo.svg';
+  logoPath = 'assets/img/logo.png';
   constructor(private readonly router: Router) {}
 
   navigate(route: AppRoutes): void {
