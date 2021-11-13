@@ -1,0 +1,100 @@
+<div class="text-center">
+  <section>
+    <div class="my-8 text-4xl font-josefin font-medium">THE AMAZON</div>
+    <img class="w-full" [src]="amazonImg" />
+    <div class="my-8 text-4xl font-josefin font-medium">IS IN DANGER</div>
+    <img class="w-full" [src]="amazonBurningImg" />
+    <div>
+      <div class="flex flex-row justify-around mt-16">
+        <div class="m-4"><img [src]="skull1" /></div>
+        <div class="m-4"><img [src]="skull2" /></div>
+      </div>
+    </div>
+  </section>
+  <div>
+    <img class="w-full mt-12" [src]="divider" />
+  </div>
+  <section>
+    <div>
+      <div class="my-16 text-4xl font-josefin font-medium">
+        THE SOLUTION - FORESTART
+      </div>
+      <img [src]="ethereumBg" />
+    </div>
+    <div class="my-16">
+      <div class="flex flex-row justify-around mt-16">
+        <div class="m-4"><img [src]="amazoncircle1" /></div>
+        <div class="m-4"><img [src]="amazoncircle2" /></div>
+      </div>
+      <div class="mt-16 w-2/3 m-auto">
+        <p class="text-2xl font-josefin">
+          Using NFTs. Each of our tokens is related to a specific Amazon forest
+          reserve for a specific time interval, ensuring its conservation and
+          also providing a sustainable financial solution for future projects.
+        </p>
+      </div>
+    </div>
+  </section>
+  <div>
+    <img class="w-full mt-12" [src]="divider" />
+  </div>
+  <section>
+    <div>
+      <div class="my-16 text-4xl font-josefin font-medium">
+        THE SOLUTION - NFTs
+      </div>
+      <div class="m-4"><img class="m-auto" [src]="cryptocircle" /></div>
+      <div class="my-16 text-4xl font-josefin font-medium">
+        Green, Transparent, Sustainable
+      </div>
+      <div class="mt-20 mb-16 text-4xl font-josefin font-medium">
+        In cooperation with:
+      </div>
+      <div>
+        <img [src]="lbbw" class="m-auto" />
+      </div>
+    </div>
+  </section>
+  <div>
+    <img class="w-full mt-12" [src]="divider" />
+  </div>
+  <section>
+    <div class="my-16 text-4xl font-josefin font-medium">MARKETPLACE</div>
+    <div class="mb-16">
+      <div class="flex flex-row justify-between w-4/5 m-auto">
+        <div class="mr-8">
+          <img [src]="marketPlaceImgs[0]" />
+          <p>200 €</p>
+        </div>
+        <div class="mr-8">
+          <img [src]="marketPlaceImgs[1]" />
+          <p>300 €</p>
+        </div>
+        <div class="mr-8">
+          <img [src]="marketPlaceImgs[0]" />
+          <p>200 €</p>
+        </div>
+        <div class="mr-8">
+          <img [src]="marketPlaceImgs[1]" />
+          <p>300 €</p>
+        </div>
+      </div>
+    </div>
+    <div class="mb-16">
+      <button
+        (click)="onMoreClick()"
+        class="text-4xl font-josefin bg-green-1 p-4 text-white"
+      >
+        MORE
+      </button>
+    </div>
+  </section>
+  <section>
+    <div class="text-center">
+      <img class="w-1/4 m-auto" [src]="logo" />
+    </div>
+  </section>
+  <div>
+    <img class="w-full mt-12" [src]="divider" />
+  </div>
+</div>

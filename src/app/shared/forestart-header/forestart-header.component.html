@@ -1,0 +1,11 @@
+<div class="flex flex-row border-b-2 border-black items-center">
+  <div class="ml-8 flex flex-row w-full">
+    <div class="text-center align-middle">
+      <p class="cursor-pointer" (click)="navigate(AppRoutes.HOME)">Home</p>
+    </div>
+    <div class="pl-8 cursor-pointer" (click)="navigate(AppRoutes.GALLERY)">
+      Gallery
+    </div>
+  </div>
+  <img class="h-20 float-right" [src]="logoPath" />
+</div>
