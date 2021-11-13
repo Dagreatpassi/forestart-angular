@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AppRoutes } from '../../app-routes.enum';
+import { AppRoutes } from '../../../app-routes.enum';
 
 @Component({
   selector: 'app-forestart-header',

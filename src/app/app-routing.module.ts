@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutes } from './app-routes.enum';
-import { GalleryComponent } from './gallery/gallery.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
@@ -12,7 +11,8 @@ const routes: Routes = [
   },
   {
     path: AppRoutes.GALLERY,
-    component: GalleryComponent,
+    loadChildren: () =>
+      import('./gallery/gallery.module').then((m) => m.GalleryModule),
   },
   { path: AppRoutes.WILDCARD, redirectTo: AppRoutes.HOME, pathMatch: 'full' },
 ];

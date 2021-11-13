@@ -4,11 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GalleryComponent } from './gallery/gallery.component';
-import { ForestartHeaderModule } from './shared/forestart-header/forestart-header.module';
+import { ForestartHeaderModule } from './shared/components/forestart-header/forestart-header.module';
 
 @NgModule({
-  declarations: [AppComponent, GalleryComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     CommonModule,
