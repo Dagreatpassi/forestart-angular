@@ -18,7 +18,7 @@
       <app-nft-card
         [imgSrc]="nft.image"
         [coordinates]="getCoordinate(nft)"
-        [name]="nft.name + '\t' + (i + 1)"
+        [name]="nft.name + '\t' + nft.id"
         [nft]="nft"
         (nftBought)="onNFTBought($event)"
       ></app-nft-card>

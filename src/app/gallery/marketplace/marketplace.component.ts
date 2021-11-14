@@ -24,12 +24,19 @@ export class MarketplaceComponent {
         ?.value || 'undefined'
     );
   }
-  onNFTBought(hash: string): void {
-    this.etherScanUrl += hash;
+  onNFTBought(data: { hash: string; id: number }): void {
+    this.etherScanUrl += data.hash;
     this.buySuccess = true;
-    console.log(this.etherScanUrl);
+
+    this.removeIdFromMarketplace(data.id);
     setTimeout(() => {
       this.buySuccess = false;
     }, 10000);
+  }
+  removeIdFromMarketplace(id: number): void {
+    const index = this.marketPlaceNfts.findIndex((el) => el.id === id);
+    if (index > -1) {
+      this.marketPlaceNfts.splice(index, 1);
+    }
   }
 }

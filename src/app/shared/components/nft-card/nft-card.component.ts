@@ -53,7 +53,7 @@ export class NftCardComponent {
       })
       .then(function (res: any) {
         console.log(res.transactionHash);
-        that.nftBought.emit(res.transactionHash);
+        that.nftBought.emit({ hash: res.transactionHash, id: that.nft.id });
       });
   }
 }
