@@ -9,7 +9,7 @@ import { forestart_contract_abi } from '../constant';
 @Component({
   selector: 'app-marketplace',
   templateUrl: './marketplace.component.html',
-  styleUrls: ['./test.scss'],
+  styleUrls: ['./marketplace.scss'],
 })
 export class MarketplaceComponent implements OnInit {
   marketplace_address = '0x0964fE204ef36f07B78fa168A5eDb8f96bE3B8e3'; // Marketplace Contract
