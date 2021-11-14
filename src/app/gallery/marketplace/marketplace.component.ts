@@ -12,6 +12,9 @@ import { Nft } from '../../shared/models/nft.model';
 export class MarketplaceComponent {
   imgSrc = 'assets/img/mint.png';
   marketPlaceNfts: Nft[] = marketPlaceNfts;
+  buySuccess = false;
+  etherScanUrl = 'https://ropsten.etherscan.io/tx/';
+
   @Input() metaMaskErrorMessage = '';
   @Input() metaMaskExists = true;
 
@@ -20,5 +23,13 @@ export class MarketplaceComponent {
       nft.attributes.find((el) => el.trait_type === TraitType.Coordinates)
         ?.value || 'undefined'
     );
+  }
+  onNFTBought(hash: string): void {
+    this.etherScanUrl += hash;
+    this.buySuccess = true;
+    console.log(this.etherScanUrl);
+    setTimeout(() => {
+      this.buySuccess = false;
+    }, 10000);
   }
 }

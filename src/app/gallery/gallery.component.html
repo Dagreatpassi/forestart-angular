@@ -6,6 +6,9 @@
     ></app-marketplace>
   </div>
   <div class="mt-8">
-    <app-collections [metaMaskExists]="metaMaskConditionsMet"></app-collections>
+    <app-collections
+      [metaMaskExists]="metaMaskConditionsMet"
+      [metaMaskErrorMessage]="metaMaskError"
+    ></app-collections>
   </div>
 </div>

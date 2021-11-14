@@ -3,6 +3,11 @@
   <div class="mt-8 ml-8 text-warning" *ngIf="!metaMaskExists">
     {{ metaMaskErrorMessage }}
   </div>
+
+  <div *ngIf="buySuccess" class="mt-8 ml-8 text-success">
+    >{{ etherScanUrl }}
+  </div>
+
   <div class="mt-8 ml-8 flex flex-row overflow-x-scroll">
     <div *ngFor="let nft of marketPlaceNfts; index as i">
       <app-nft-card
