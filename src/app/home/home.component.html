@@ -77,24 +77,24 @@
   </section>
   <app-horizontal-divider></app-horizontal-divider>
   <section>
-    <div class="my-16 text-4xl">MARKETPLACE</div>
+    <div class="my-16 text-4xl">NFT MARKETPLACE</div>
     <div class="mb-16">
       <div class="flex flex-row justify-between w-4/5 m-auto">
-        <div class="mr-8">
-          <img [src]="marketPlaceImgs[0]" />
-          <p>200 €</p>
+        <div class="mr-8 cursor-pointer" (click)="onMoreClick()">
+          <img style="width: 200px" [src]="marketPlaceImgs[0]" />
+          <p class="mt-2">1000 €</p>
         </div>
-        <div class="mr-8">
-          <img [src]="marketPlaceImgs[1]" />
-          <p>300 €</p>
+        <div class="mr-8 cursor-pointer" (click)="onMoreClick()">
+          <img style="width: 200px" [src]="marketPlaceImgs[1]" />
+          <p class="mt-2">1000 €</p>
         </div>
-        <div class="mr-8">
-          <img [src]="marketPlaceImgs[0]" />
-          <p>200 €</p>
+        <div class="mr-8 cursor-pointer" (click)="onMoreClick()">
+          <img style="width: 200px" [src]="marketPlaceImgs[2]" />
+          <p class="mt-2">1000 €</p>
         </div>
-        <div class="mr-8">
-          <img [src]="marketPlaceImgs[1]" />
-          <p>300 €</p>
+        <div class="mr-8 cursor-pointer" (click)="onMoreClick()">
+          <img style="width: 200px" [src]="marketPlaceImgs[3]" />
+          <p class="mt-2">1000 €</p>
         </div>
       </div>
     </div>
@@ -103,7 +103,7 @@
         (click)="onMoreClick()"
         class="text-4xl bg-green-1 p-4 text-white"
       >
-        MORE
+        BUY HERE
       </button>
     </div>
   </section>

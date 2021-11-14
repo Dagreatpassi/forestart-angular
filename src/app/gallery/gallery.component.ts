@@ -7,7 +7,7 @@ import { Contract } from 'web3-eth-contract';
 
 import { loadDataInStore } from '../core/actions/marketplace.actions';
 import { Nft } from '../shared/models/nft.model';
-import { forestart_contract_abi, marketplace_contract_abi } from './constant';
+import { marketplace_contract_abi } from './constant';
 
 @Component({
   selector: 'app-gallery',
@@ -57,11 +57,12 @@ export class GalleryComponent implements OnInit {
   }
 
   async executeMetaMaskLogic(web3: Web3): Promise<void> {
-    this.nftContract = new web3.eth.Contract(
-      forestart_contract_abi as any,
-      this.forestart_address
-    );
-    this.getNFTs(this.nftContract);
+    // this.nftContract = new web3.eth.Contract(
+    //   forestart_contract_abi as any,
+    //   this.forestart_address
+    // );
+    // this.getNFTs(this.nftContract);
+
     this.marketContract = new web3.eth.Contract(
       marketplace_contract_abi as any,
       this.marketplace_address

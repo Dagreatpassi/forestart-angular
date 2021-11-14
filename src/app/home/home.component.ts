@@ -22,8 +22,10 @@ export class HomeComponent {
   lbbw = 'assets/img/lbbw_logo.png';
   logo = 'assets/img/logo.png';
   marketPlaceImgs = [
-    'assets/img/marketplaceimg1.png',
-    'assets/img/marketplaceimg2.png',
+    'assets/nfts/images/nft_1.jpg',
+    'assets/nfts/images/nft_2.jpg',
+    'assets/nfts/images/nft_3.jpg',
+    'assets/nfts/images/nft_4.jpg',
   ];
   missionSrc = 'assets/img/tokenize.png';
   posImg = 'assets/img/proofofsus.png';
