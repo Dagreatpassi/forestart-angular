@@ -16,7 +16,7 @@
       <div *ngFor="let nft of myNfts">
         <app-nft-card
           [imgSrc]="nft.image"
-          [coordinates]="getCoordinate(nft)"
+          [coordinates]="nft.attributes[3].value"
           [name]="nft.name + '\t' + nft.id"
           [nft]="nft"
         ></app-nft-card>
