@@ -1,8 +1,11 @@
 <div class="mt-8">
   <div>
-    <app-marketplace [metaMaskExists]="metaMaskExists"></app-marketplace>
+    <app-marketplace
+      [metaMaskExists]="metaMaskConditionsMet"
+      [metaMaskErrorMessage]="metaMaskError"
+    ></app-marketplace>
   </div>
   <div class="mt-8">
-    <app-collections [metaMaskExists]="metaMaskExists"></app-collections>
+    <app-collections [metaMaskExists]="metaMaskConditionsMet"></app-collections>
   </div>
 </div>

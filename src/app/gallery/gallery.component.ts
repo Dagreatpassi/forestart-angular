@@ -16,40 +16,58 @@ import { forestart_contract_abi, marketplace_contract_abi } from './constant';
 export class GalleryComponent implements OnInit {
   forestart_address = '0x9B117bC41f66FE6968a6A5A78FA9633b7904651C'; // FORESTART Contract (NFT)
   marketplace_address = '0x0964fE204ef36f07B78fa168A5eDb8f96bE3B8e3'; // Marketplace Contract
-  metaMaskExists = true;
+  metaMaskConditionsMet = false;
+  metaMaskError: string = '';
+
   imageToShow: any;
-  public nftContract: Contract;
-  public marketContract: Contract;
+  public nftContract!: Contract;
+  public marketContract!: Contract;
   constructor(private http: HttpClient, private store: Store) {}
 
   ngOnInit(): void {
     if ((window as any).ethereum) {
       let web3 = new Web3((window as any).ethereum);
-
-      web3.eth.requestAccounts().then(console.log);
-
-      // check chain ID == 3 (ropsten)
-      web3.eth.getChainId().then(console.log);
-
-      // falls user eingeloggt &&  chain ID === 3
-      // Please login to meta mask and choose ropsten network
-
-      this.nftContract = new web3.eth.Contract(
-        forestart_contract_abi as any,
-        this.forestart_address
-      );
-
-      this.getNFTs(this.nftContract);
-
-      this.marketContract = new web3.eth.Contract(
-        marketplace_contract_abi as any,
-        this.marketplace_address
-      );
-      this.getMarket(this.marketContract);
+      console.log('here');
+      this.metaMaskInit(web3);
     } else {
-      // display to user please enable meta mask
-      this.metaMaskExists = false;
+      this.metaMaskConditionsMet = false;
+      this.metaMaskError =
+        "Note: You don't have Metamask installed. Please install MetaMask to purchase NFTs";
     }
+  }
+  async metaMaskInit(web3: Web3): Promise<void> {
+    console.log('try login');
+    const isLoggedIn = (await (await web3.eth.requestAccounts()).length) > 0;
+    if (isLoggedIn) {
+      this.metaMaskConditionsMet = true;
+      const isOnEthChannel = (await web3.eth.getChainId()) === 3;
+      console.log(isOnEthChannel);
+
+      if (isOnEthChannel) {
+        this.executeMetaMaskLogic(web3);
+      } else {
+        this.metaMaskConditionsMet = false;
+        this.metaMaskError =
+          'Note: You are on the wrong network in Metamask.Please switch to robston network';
+      }
+    } else {
+      this.metaMaskConditionsMet = false;
+      this.metaMaskError =
+        'Note: You are not logged in. Please login on Meta Mask';
+    }
+  }
+
+  async executeMetaMaskLogic(web3: Web3): Promise<void> {
+    this.nftContract = new web3.eth.Contract(
+      forestart_contract_abi as any,
+      this.forestart_address
+    );
+    this.getNFTs(this.nftContract);
+    this.marketContract = new web3.eth.Contract(
+      marketplace_contract_abi as any,
+      this.marketplace_address
+    );
+    this.getMarket(this.marketContract);
   }
 
   async getMarket(marketContract: any): Promise<any> {

@@ -12,6 +12,7 @@ import { Nft } from '../../shared/models/nft.model';
 export class MarketplaceComponent {
   imgSrc = 'assets/img/mint.png';
   marketPlaceNfts: Nft[] = marketPlaceNfts;
+  @Input() metaMaskErrorMessage = '';
   @Input() metaMaskExists = true;
 
   getCoordinate(nft: Nft): string {

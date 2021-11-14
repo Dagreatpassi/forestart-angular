@@ -1,8 +1,7 @@
 <div>
   <div class="text-center text-4xl">MARKETPLACE</div>
   <div class="mt-8 ml-8 text-warning" *ngIf="!metaMaskExists">
-    Note: You don't have Metamask installed. Please install MetaMask to purchase
-    NFTs
+    {{ metaMaskErrorMessage }}
   </div>
   <div class="mt-8 ml-8 flex flex-row overflow-x-scroll">
     <div *ngFor="let nft of marketPlaceNfts; index as i">
