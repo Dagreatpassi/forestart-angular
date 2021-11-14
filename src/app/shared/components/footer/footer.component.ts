@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
   imgSrc = 'assets/img/favicon/favicon.png';
-
+  youtubeImg = 'assets/img/youtube.svg';
   constructor() {}
 }
