@@ -6,4 +6,8 @@ import { Component } from '@angular/core';
 })
 export class CollectionsComponent {
   imgSrc = 'assets/img/mint.png';
+
+  navigateToBuy(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }
