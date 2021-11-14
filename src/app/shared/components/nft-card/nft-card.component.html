@@ -1,0 +1,43 @@
+<div id="card" class="bg-beige m-4" style="width: 280px">
+  <div>
+    <img [src]="imgSrc" />
+  </div>
+  <div class="mx-1">
+    <div class="mt-2 text-xl">{{ name }}</div>
+    <div class="flex flex-row mt-1 w-full">
+      <div class="w-3/5 pr-1">
+        <div>
+          <div class="text-xs">Description:</div>
+          <div class="mt-1 text-xxs">{{ productDescription }}</div>
+        </div>
+        <div>
+          <div class="text-xs">Coordinates:</div>
+          <div class="mt-1 text-xxs">{{ coordinates }}</div>
+        </div>
+      </div>
+      <div class="w-2/5">
+        <div class="text-xs">By purchasing:</div>
+        <div [innerHTML]="purchaseDescription" class="mt-1 text-xxs">
+          {{ purchaseDescription }}
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-row mt-1 w-full">
+      <div class="w-3/5 pr-1">
+        <div class="mt-2">{{ price }} {{ currency }}</div>
+      </div>
+      <div class="w-2/5">
+        <button
+          *ngIf="buyEnabled"
+          (click)="onBuyClick()"
+          class="bg-green-1 py-1 px-2 text-white text-sm mt-2"
+        >
+          BUY
+        </button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <img class="w-full mt-4" [src]="divider" />
+  </div>
+</div>

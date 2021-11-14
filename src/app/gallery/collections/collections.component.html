@@ -1,0 +1,42 @@
+<div>
+  <div class="text-center text-4xl">MY GALLERY</div>
+  <div class="text-center">
+    This section displays all your owned NFTs.<br />Thanks for making the world
+    a better place.
+  </div>
+  <div class="mt-8 ml-8 text-warning text-center" *ngIf="!metaMaskExists">
+    {{ metaMaskErrorMessage }}
+  </div>
+
+  <div>
+    <div
+      class="mt-8 ml-8 flex flex-row overflow-x-scroll"
+      *ngIf="myNfts.length > 0; else empty"
+    >
+      <div *ngFor="let nft of myNfts">
+        <app-nft-card
+          [imgSrc]="nft.image"
+          [coordinates]="nft.attributes[3].value"
+          [name]="nft.name + '\t' + nft.id"
+          [nft]="nft"
+          [buyEnabled]="false"
+        ></app-nft-card>
+      </div>
+    </div>
+    <ng-template #empty>
+      <div class="mt-8 text-center w-full text-sm opacity-60">
+        You do not own any NFTs yet.
+      </div>
+    </ng-template>
+  </div>
+  <div class="mt-12 text-center text-3xl">
+    <div>MAKE AN IMPACT</div>
+    <button
+      class="bg-green-1 px-2 py-1 text-white my-2"
+      (click)="navigateToBuy()"
+    >
+      BUY
+    </button>
+    <div>SAVE THE RAINFOREST</div>
+  </div>
+</div>

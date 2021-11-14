@@ -1,0 +1,70 @@
+<div>
+  <div class="text-center text-4xl">MARKETPLACE</div>
+
+  <div *ngIf="buySuccess" class="mt-8 ml-8">
+    <p>
+      Your purchase was successful. Take a look at
+      <a class="text-success" [href]="etherScanUrl" target="_blank">{{
+        etherScanUrl
+      }}</a>
+    </p>
+  </div>
+
+  <div class="mt-8 ml-8">
+    <div *ngIf="nftsLoading; else displayNFTs">
+      <div class="text-center pt-20" style="height: 280px; width: 100%">
+        <div *ngIf="metaMaskExists; else cantLoad" class="lds-ellipsis">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <ng-template #cantLoad>
+          <div class="mt-8 ml-8 text-warning" *ngIf="!metaMaskExists">
+            <div>
+              No Meta Mask configuration found - Marketplace NFTs could not be
+              loaded.<br />
+              Please install Meta Mask and login.
+            </div>
+
+            <button
+              class="
+                text-black
+                border-2 border-black
+                rounded-md
+                p-1
+                m-1
+                bg-warning
+              "
+              (click)="showSampleData()"
+            >
+              Show example NFTs instead
+            </button>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <ng-template #displayNFTs>
+      <div class="flex flex-row overflow-x-scroll">
+        <div *ngFor="let nft of marketPlaceNfts; index as i">
+          <app-nft-card
+            [buyEnabled]="buyEnabled"
+            [imgSrc]="nft.image"
+            [coordinates]="nft.attributes[3].value"
+            [name]="nft.name + '\t' + nft.id"
+            [nft]="nft"
+            (nftBought)="onNFTBought($event)"
+          ></app-nft-card>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+  <div class="mt-12 flex flex-row items-center justify-center mx-6">
+    <img [src]="imgSrc" />
+    <div class="ml-6 text-2xl">
+      An NFT is a non-fungible token, a unique digital representaiton of an
+      object.
+    </div>
+  </div>
+  <app-horizontal-divider></app-horizontal-divider>
+</div>
