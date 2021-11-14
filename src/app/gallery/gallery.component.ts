@@ -5,36 +5,57 @@ import { Observable } from 'rxjs';
 import Web3 from 'web3';
 import { Contract } from 'web3-eth-contract';
 
-import { loadDataInStore } from '../core/actions/marketplace.actions';
+import { getMarketplace, loadDataInStore } from '../core/actions/marketplace.actions';
 import { Nft } from '../shared/models/nft.model';
-import { contract } from './constant';
+import { forestart_contract_abi, marketplace_contract_abi } from './constant';
 
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
 })
 export class GalleryComponent implements OnInit {
-  contractAdress = '0x9B117bC41f66FE6968a6A5A78FA9633b7904651C';
+  forestart_address = '0x9B117bC41f66FE6968a6A5A78FA9633b7904651C'; // FORESTART Contract (NFT)
+  marketplace_address ='0x0964fE204ef36f07B78fa168A5eDb8f96bE3B8e3'; // Marketplace Contract
   metaMaskExists = true;
   imageToShow: any;
   public nftContract: Contract;
+  public marketContract: Contract;
   constructor(private http: HttpClient, private store: Store) {}
 
   ngOnInit(): void {
     if ((window as any).ethereum) {
       let web3 = new Web3((window as any).ethereum);
+
+      web3.eth.requestAccounts().then(console.log);
+
+      // check chain ID == 3 (ropsten)
+      web3.eth.getChainId().then(console.log);
+
+
       this.nftContract = new web3.eth.Contract(
-        contract.abi as any,
-        this.contractAdress
+        forestart_contract_abi as any,
+        this.forestart_address
       );
-      this.call(this.nftContract);
+
+      this.getNFTs(this.nftContract);
+
+      this.marketContract = new web3.eth.Contract(
+        marketplace_contract_abi as any,
+        this.marketplace_address
+      );
+      this.getMarket(this.marketContract);
+
     } else {
       // display to user please enable meta mask
       this.metaMaskExists = false;
     }
   }
 
-  async call(nftContract: any): Promise<any> {
+  async getMarket(marketContract: any): Promise<any> {
+    console.log("owner", await marketContract.methods.owner().call())
+  }
+
+  async getNFTs(nftContract: any): Promise<any> {
     let nfts: string[] = [];
     for (let i = 1; i <= 5; i++) {
       console.log(`getting nfts $${i}`);
