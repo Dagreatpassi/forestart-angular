@@ -1,5 +1,10 @@
 <div>
   <div class="text-center text-4xl">COLLECTIONS</div>
+  <div class="mt-8 ml-8 text-warning" *ngIf="!metaMaskExists">
+    Note: You don't have Metamask installed. Please install MetaMask to see your
+    own collection
+  </div>
+
   <div class="mt-8 ml-8 flex flex-row overflow-x-scroll">
     <app-nft-card></app-nft-card>
     <app-nft-card></app-nft-card>

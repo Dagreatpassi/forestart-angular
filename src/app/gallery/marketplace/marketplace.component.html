@@ -1,12 +1,17 @@
 <div>
   <div class="text-center text-4xl">MARKETPLACE</div>
+  <div class="mt-8 ml-8 text-warning" *ngIf="!metaMaskExists">
+    Note: You don't have Metamask installed. Please install MetaMask to purchase
+    NFTs
+  </div>
   <div class="mt-8 ml-8 flex flex-row overflow-x-scroll">
-    <app-nft-card></app-nft-card>
-    <app-nft-card></app-nft-card>
-    <app-nft-card></app-nft-card>
-    <app-nft-card></app-nft-card>
-    <app-nft-card></app-nft-card>
-    <app-nft-card></app-nft-card>
+    <div *ngFor="let nft of marketPlaceNfts; index as i">
+      <app-nft-card
+        [imgSrc]="nft.image"
+        [coordinates]="getCoordinate(nft)"
+        [name]="nft.name + '\t' + (i + 1)"
+      ></app-nft-card>
+    </div>
   </div>
   <div class="mt-12 flex flex-row items-center justify-center mx-6">
     <img [src]="imgSrc" />

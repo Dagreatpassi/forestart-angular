@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Web3 from 'web3';
+import { Contract } from 'web3-eth-contract';
 
 import { contract } from './constant';
 
@@ -8,28 +9,27 @@ import { contract } from './constant';
   templateUrl: './gallery.component.html',
 })
 export class GalleryComponent implements OnInit {
-  contractAdress = '';
+  contractAdress = '0x9B117bC41f66FE6968a6A5A78FA9633b7904651C';
+  metaMaskExists = true;
+  public nftContract: Contract;
 
   ngOnInit(): void {
-    const web3 = new Web3('ws://localhost:8546');
-    console.log('..connecting');
-    console.log(web3);
-    console.log(contract);
-
-    const nftContract = new web3.eth.Contract(
-      contract.abi as any,
-      this.contractAdress
-    );
-    console.log(nftContract);
-    // this.call(nftContract);
-
-    console.log((window as any).ethereum);
     if ((window as any).ethereum) {
+      let web3 = new Web3((window as any).ethereum);
+      this.nftContract = new web3.eth.Contract(
+        contract.abi as any,
+        this.contractAdress
+      );
+      this.call(this.nftContract);
+    } else {
+      // display to user please enable meta mask
+      this.metaMaskExists = false;
     }
   }
 
-  // async call(nftContract: any): Promise<any> {
-  //   const uri = await nftContract.methods.tokenURI(1).call();
-  //   console.log(uri);
-  // }
+  async call(nftContract: any): Promise<any> {
+    // 1-5
+    const uri = await nftContract.methods.tokenURI(5).call();
+    console.log(uri);
+  }
 }

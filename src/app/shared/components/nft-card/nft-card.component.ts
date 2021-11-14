@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { productDescription, purchaseDescription } from './constants';
 
@@ -7,11 +7,12 @@ import { productDescription, purchaseDescription } from './constants';
   templateUrl: './nft-card.component.html',
 })
 export class NftCardComponent {
-  imgSrc = 'assets/img/marketplaceimg2.png';
-  title = 'NFT';
+  @Input() imgSrc = 'assets/img/marketplaceimg2.png';
+  @Input() coordinates = '12°00\'00.3"S 77°06\'18.9"W';
+  @Input() name = 'NFT';
+
   productDescription = productDescription;
   purchaseDescription = purchaseDescription;
-  coordinates = '12°00\'00.3"S 77°06\'18.9"W';
   price = 300;
   currency = 'EUR';
   divider = 'assets/img/pattern_low.png';

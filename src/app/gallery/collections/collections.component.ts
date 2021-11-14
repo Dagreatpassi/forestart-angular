@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-collections',
@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 })
 export class CollectionsComponent {
   imgSrc = 'assets/img/mint.png';
+  @Input() metaMaskExists = true;
 
   navigateToBuy(): void {
     window.scrollTo({ top: 0, behavior: 'smooth' });
