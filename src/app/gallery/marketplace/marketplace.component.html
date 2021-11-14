@@ -15,6 +15,7 @@
         [coordinates]="getCoordinate(nft)"
         [name]="nft.name + '\t' + (i + 1)"
         [nft]="nft"
+        (nftBought)="onNFTBought($event)"
       ></app-nft-card>
     </div>
   </div>

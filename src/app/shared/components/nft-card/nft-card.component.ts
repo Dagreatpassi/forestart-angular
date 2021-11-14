@@ -1,5 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
-import { EventEmitter } from 'stream';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import Web3 from 'web3';
 import { Contract } from 'web3-eth-contract';
 
