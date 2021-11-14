@@ -8,15 +8,25 @@
     {{ metaMaskErrorMessage }}
   </div>
 
-  <div class="mt-8 ml-8 flex flex-row">
-    <div *ngIf="myNfts.length > 0; else empty"></div>
+  <div>
+    <div
+      class="mt-8 ml-8 flex flex-row overflow-x-scroll"
+      *ngIf="myNfts.length > 0; else empty"
+    >
+      <div *ngFor="let nft of myNfts">
+        <app-nft-card
+          [imgSrc]="nft.image"
+          [coordinates]="getCoordinate(nft)"
+          [name]="nft.name + '\t' + nft.id"
+          [nft]="nft"
+        ></app-nft-card>
+      </div>
+    </div>
     <ng-template #empty>
-      <div class="text-center w-full text-sm opacity-60">
+      <div class="mt-8 text-center w-full text-sm opacity-60">
         You do not own any NFTs yet.
       </div>
     </ng-template>
-    <!-- <app-nft-card></app-nft-card>
-    <app-nft-card></app-nft-card> -->
   </div>
   <div class="mt-12 text-center text-3xl">
     <div>MAKE AN IMPACT</div>
