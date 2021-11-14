@@ -25,6 +25,10 @@ export class GalleryComponent implements OnInit {
   constructor(private http: HttpClient, private store: Store) {}
 
   ngOnInit(): void {
+    setTimeout(() => {
+      console.log('timeout');
+    }, 5000);
+
     if ((window as any).ethereum) {
       let web3 = new Web3((window as any).ethereum);
       this.metaMaskInit(web3);

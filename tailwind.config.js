@@ -26,7 +26,7 @@ module.exports = {
       black: "#000000",
       blue: "#71A5DB",
       warning: "#FF9E00",
-      success: "#00FF1B",
+      success: "#00B413",
     },
 
     extend: {},

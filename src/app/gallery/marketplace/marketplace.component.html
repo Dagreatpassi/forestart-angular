@@ -4,10 +4,12 @@
     {{ metaMaskErrorMessage }}
   </div>
 
-  <div *ngIf="buySuccess" class="mt-8 ml-8 text-success">
+  <div *ngIf="buySuccess" class="mt-8 ml-8">
     <p>
       Your purchase was successful. Take a look at
-      <a [href]="etherScanUrl">{{ etherScanUrl }}</a>
+      <a class="text-success" [href]="etherScanUrl" target="_blank">{{
+        etherScanUrl
+      }}</a>
     </p>
   </div>
 
