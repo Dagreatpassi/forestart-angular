@@ -9,11 +9,13 @@ import { forestart_contract_abi } from '../constant';
 @Component({
   selector: 'app-marketplace',
   templateUrl: './marketplace.component.html',
+  styleUrls: ['./test.scss'],
 })
 export class MarketplaceComponent implements OnInit {
   marketplace_address = '0x0964fE204ef36f07B78fa168A5eDb8f96bE3B8e3'; // Marketplace Contract
   forestart_address = '0x9B117bC41f66FE6968a6A5A78FA9633b7904651C';
-
+  buyEnabled = true;
+  nftsLoading = true;
   public forestartContract!: Contract;
 
   imgSrc = 'assets/img/mint.png';
@@ -32,21 +34,33 @@ export class MarketplaceComponent implements OnInit {
         forestart_contract_abi as any,
         this.forestart_address
       );
-      this.getMarketPlaceNfts();
+      setTimeout(() => {
+        this.getMarketPlaceNfts();
+      }, 1000);
     }
   }
 
   async getMarketPlaceNfts(): Promise<void> {
+    let items = [];
     for (let i = 1; i <= 5; i++) {
+      console.log('in if');
       let ownerOfI = await this.forestartContract.methods.ownerOf(i).call();
 
       if (ownerOfI === this.marketplace_address) {
         const item = marketPlaceNfts.find((item) => item.id === i);
         if (item) {
-          this.marketPlaceNfts.push(item);
+          items.push(item);
         }
       }
     }
+    this.marketPlaceNfts = items;
+    this.nftsLoading = false;
+  }
+
+  showSampleData(): void {
+    this.marketPlaceNfts = marketPlaceNfts;
+    this.nftsLoading = false;
+    this.buyEnabled = false;
   }
 
   onNFTBought(data: { hash: string; id: number }): void {

@@ -16,7 +16,7 @@ import { marketplace_contract_abi } from './constant';
 export class GalleryComponent implements OnInit {
   forestart_address = '0x9B117bC41f66FE6968a6A5A78FA9633b7904651C'; // FORESTART Contract (NFT)
   marketplace_address = '0x0964fE204ef36f07B78fa168A5eDb8f96bE3B8e3'; // Marketplace Contract
-  metaMaskConditionsMet = false;
+  metaMaskConditionsMet = true;
   metaMaskError: string = '';
 
   imageToShow: any;

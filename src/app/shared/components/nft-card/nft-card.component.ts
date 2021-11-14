@@ -14,6 +14,7 @@ export class NftCardComponent {
   @Input() imgSrc = 'assets/img/marketplaceimg2.png';
   @Input() coordinates = '12°00\'00.3"S 77°06\'18.9"W';
   @Input() name = 'NFT';
+  @Input() buyEnabled = true;
   @Input() nft!: Nft;
 
   @Output() nftBought = new EventEmitter();

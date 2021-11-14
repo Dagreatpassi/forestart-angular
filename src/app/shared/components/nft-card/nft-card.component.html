@@ -28,6 +28,7 @@
       </div>
       <div class="w-2/5">
         <button
+          *ngIf="buyEnabled"
           (click)="onBuyClick()"
           class="bg-green-1 py-1 px-2 text-white text-sm mt-2"
         >
