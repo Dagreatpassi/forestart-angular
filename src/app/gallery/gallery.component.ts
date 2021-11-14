@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import Web3 from 'web3';
 import { Contract } from 'web3-eth-contract';
 
-import { getMarketplace, loadDataInStore } from '../core/actions/marketplace.actions';
+import { loadDataInStore } from '../core/actions/marketplace.actions';
 import { Nft } from '../shared/models/nft.model';
 import { forestart_contract_abi, marketplace_contract_abi } from './constant';
 
@@ -15,7 +15,7 @@ import { forestart_contract_abi, marketplace_contract_abi } from './constant';
 })
 export class GalleryComponent implements OnInit {
   forestart_address = '0x9B117bC41f66FE6968a6A5A78FA9633b7904651C'; // FORESTART Contract (NFT)
-  marketplace_address ='0x0964fE204ef36f07B78fa168A5eDb8f96bE3B8e3'; // Marketplace Contract
+  marketplace_address = '0x0964fE204ef36f07B78fa168A5eDb8f96bE3B8e3'; // Marketplace Contract
   metaMaskExists = true;
   imageToShow: any;
   public nftContract: Contract;
@@ -31,6 +31,8 @@ export class GalleryComponent implements OnInit {
       // check chain ID == 3 (ropsten)
       web3.eth.getChainId().then(console.log);
 
+      // falls user eingeloggt &&  chain ID === 3
+      // Please login to meta mask and choose ropsten network
 
       this.nftContract = new web3.eth.Contract(
         forestart_contract_abi as any,
@@ -44,7 +46,6 @@ export class GalleryComponent implements OnInit {
         this.marketplace_address
       );
       this.getMarket(this.marketContract);
-
     } else {
       // display to user please enable meta mask
       this.metaMaskExists = false;
@@ -52,7 +53,7 @@ export class GalleryComponent implements OnInit {
   }
 
   async getMarket(marketContract: any): Promise<any> {
-    console.log("owner", await marketContract.methods.owner().call())
+    console.log('owner', await marketContract.methods.owner().call());
   }
 
   async getNFTs(nftContract: any): Promise<any> {

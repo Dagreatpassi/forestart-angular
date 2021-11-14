@@ -1,6 +1,7 @@
 // Fallback 1:1 nft data if the solution via meta mask is not working as expected
 export const marketPlaceNfts = [
   {
+    id: 1,
     attributes: [
       {
         trait_type: 'Country',
@@ -30,6 +31,7 @@ export const marketPlaceNfts = [
     name: 'FORESTART',
   },
   {
+    id: 2,
     attributes: [
       {
         trait_type: 'Country',
@@ -59,6 +61,7 @@ export const marketPlaceNfts = [
     name: 'FORESTART',
   },
   {
+    id: 3,
     attributes: [
       {
         trait_type: 'Country',
@@ -88,6 +91,7 @@ export const marketPlaceNfts = [
     name: 'FORESTART',
   },
   {
+    id: 4,
     attributes: [
       {
         trait_type: 'Country',
@@ -117,6 +121,7 @@ export const marketPlaceNfts = [
     name: 'FORESTART',
   },
   {
+    id: 5,
     attributes: [
       {
         trait_type: 'Country',

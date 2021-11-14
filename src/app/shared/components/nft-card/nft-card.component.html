@@ -27,7 +27,10 @@
         <div class="mt-2">{{ price }} {{ currency }}</div>
       </div>
       <div class="w-2/5">
-        <button class="bg-green-1 py-1 px-2 text-white text-sm mt-2">
+        <button
+          (click)="onBuyClick()"
+          class="bg-green-1 py-1 px-2 text-white text-sm mt-2"
+        >
           BUY
         </button>
       </div>
