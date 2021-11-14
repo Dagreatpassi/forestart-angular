@@ -27,7 +27,6 @@ export class GalleryComponent implements OnInit {
   ngOnInit(): void {
     if ((window as any).ethereum) {
       let web3 = new Web3((window as any).ethereum);
-      console.log('here');
       this.metaMaskInit(web3);
     } else {
       this.metaMaskConditionsMet = false;

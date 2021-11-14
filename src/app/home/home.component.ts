@@ -25,6 +25,9 @@ export class HomeComponent {
     'assets/img/marketplaceimg1.png',
     'assets/img/marketplaceimg2.png',
   ];
+  missionSrc = 'assets/img/tokenize.png';
+  posImg = 'assets/img/proofofsus.png';
+  projectFacts = 'assets/img/project_facts.png';
 
   onMoreClick(): void {
     this.router.navigate([AppRoutes.GALLERY]);

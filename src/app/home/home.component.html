@@ -34,7 +34,16 @@
   <app-horizontal-divider></app-horizontal-divider>
   <section>
     <div>
-      <div class="my-16 text-4xl">THE SOLUTION - NFTs</div>
+      <div class="my-16 text-4xl">OUR MISSION</div>
+      <div>
+        To make sure future generations can still discover the secrets of the
+        rainforest.
+      </div>
+    </div>
+    <div class="mx-4 mt-16">
+      <img class="m-auto" [src]="missionSrc" />
+    </div>
+    <div class="mt-24">
       <div class="m-4"><img class="m-auto" [src]="cryptocircle" /></div>
       <div class="my-16 text-4xl">Green, Transparent, Sustainable</div>
       <div class="mt-20 mb-16 text-4xl">In cooperation with:</div>
@@ -43,9 +52,30 @@
       </div>
     </div>
   </section>
-  <div>
-    <img class="w-full mt-12" [src]="divider" />
-  </div>
+  <app-horizontal-divider></app-horizontal-divider>
+
+  <section>
+    <div class="my-16 text-4xl">PROOF OF SUSTAINABILITY</div>
+    <div class="m-4">
+      <div class="m-auto w-2/3 mb-16">
+        The 2-stage proof of sustainability model validates that the forest has
+        been truly protected. In the first step, satellite images are
+        conitnuously collected (via an oracle) and checked regarding the forest
+        state. In the second step a helicopter records once a year the protected
+        areas with certified measuring devices (GPS tracker connected with
+        camera).
+      </div>
+
+      <img class="m-auto pb-4" [src]="posImg" />
+    </div>
+  </section>
+  <app-horizontal-divider></app-horizontal-divider>
+  <section>
+    <div class="mt-12 mx-4">
+      <img class="m-auto pb-4" [src]="projectFacts" />
+    </div>
+  </section>
+  <app-horizontal-divider></app-horizontal-divider>
   <section>
     <div class="my-16 text-4xl">MARKETPLACE</div>
     <div class="mb-16">
