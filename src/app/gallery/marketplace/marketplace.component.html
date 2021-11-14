@@ -5,7 +5,10 @@
   </div>
 
   <div *ngIf="buySuccess" class="mt-8 ml-8 text-success">
-    >{{ etherScanUrl }}
+    <p>
+      Your purchase was successful. Take a look at
+      <a [href]="etherScanUrl">{{ etherScanUrl }}</a>
+    </p>
   </div>
 
   <div class="mt-8 ml-8 flex flex-row overflow-x-scroll">
