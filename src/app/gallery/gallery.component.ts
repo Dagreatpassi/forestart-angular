@@ -35,7 +35,6 @@ export class GalleryComponent implements OnInit {
     }
   }
   async metaMaskInit(web3: Web3): Promise<void> {
-    console.log('try login');
     const isLoggedIn = (await (await web3.eth.requestAccounts()).length) > 0;
     if (isLoggedIn) {
       this.metaMaskConditionsMet = true;

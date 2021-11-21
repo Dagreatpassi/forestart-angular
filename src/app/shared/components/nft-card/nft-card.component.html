@@ -34,6 +34,13 @@
         >
           BUY
         </button>
+        <button
+          *ngIf="isGallery"
+          (click)="onGiveBack()"
+          class="bg-warning py-1 px-2 text-white text-sm mt-2"
+        >
+          GIVE BACK
+        </button>
       </div>
     </div>
   </div>
