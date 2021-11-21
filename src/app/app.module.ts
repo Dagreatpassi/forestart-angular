@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { reducers } from './core/reducers';
 import { FooterModule } from './shared/components/footer/footer.module';
 import { ForestartHeaderModule } from './shared/components/forestart-header/forestart-header.module';
+import { MarketplaceService } from './shared/services/marketplace.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,7 +28,7 @@ import { ForestartHeaderModule } from './shared/components/forestart-header/fore
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
   ],
-  providers: [],
+  providers: [MarketplaceService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

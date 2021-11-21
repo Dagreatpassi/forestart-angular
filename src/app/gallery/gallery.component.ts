@@ -39,7 +39,6 @@ export class GalleryComponent implements OnInit {
     if (isLoggedIn) {
       this.metaMaskConditionsMet = true;
       const isOnEthChannel = (await web3.eth.getChainId()) === 3;
-      console.log(isOnEthChannel);
 
       if (isOnEthChannel) {
         this.executeMetaMaskLogic(web3);

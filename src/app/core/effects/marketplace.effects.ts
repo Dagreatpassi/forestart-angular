@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, mergeMap } from 'rxjs';
-import { MarketplaceService } from 'src/app/shared/marketplace.service';
+import { MarketplaceService } from 'src/app/shared/services/marketplace.service';
 
 import { getMarketplace, getMarketplaceSuccess } from '../actions/marketplace.actions';
 

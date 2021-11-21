@@ -62,4 +62,13 @@ export class CollectionsComponent implements OnInit {
       this.myNfts.push(foundNft);
     }
   }
+  onNftGivenBack(data: { hash: string; id: number }): void {
+    this.removeIdFromCollection(data.id);
+  }
+  removeIdFromCollection(id: number): void {
+    const index = this.myNfts.findIndex((el) => el.id === id);
+    if (index > -1) {
+      this.myNfts.splice(index, 1);
+    }
+  }
 }

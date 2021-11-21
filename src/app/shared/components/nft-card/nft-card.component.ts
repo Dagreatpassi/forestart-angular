@@ -1,9 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import Web3 from 'web3';
-import { Contract } from 'web3-eth-contract';
 
-import { marketplace_contract_abi } from '../../../gallery/constant';
 import { Nft } from '../../models/nft.model';
+import { MarketplaceService } from '../../services/marketplace.service';
 import { productDescription, purchaseDescription } from './constants';
 
 @Component({
@@ -19,9 +17,7 @@ export class NftCardComponent implements OnInit {
   @Input() isGallery = false;
 
   @Output() nftBought = new EventEmitter();
-
-  marketplace_address = '0x0964fE204ef36f07B78fa168A5eDb8f96bE3B8e3'; // Marketplace Contract
-  marketContract: Contract;
+  @Output() nftGivenBack = new EventEmitter();
 
   productDescription = productDescription;
   purchaseDescription = purchaseDescription;
@@ -29,40 +25,66 @@ export class NftCardComponent implements OnInit {
   currency = 'EUR';
   divider = 'assets/img/pattern_low.png';
   eth_price = '0.25'; // static for now - can be dynamic later
-  web3: Web3;
 
-  // it is static in the marketplace contract as well
+  sender: string;
+  uint256id: string;
+
+  constructor(private marketPlaceService: MarketplaceService) {}
 
   ngOnInit(): void {
-    this.web3 = new Web3((window as any).ethereum);
+    this.setup();
+  }
+  async setup(): Promise<void> {
+    this.sender = (await this.marketPlaceService.web3.eth.requestAccounts())[0];
+    this.uint256id = this.marketPlaceService.web3.eth.abi.encodeParameter(
+      'uint256',
+      this.nft.id
+    );
   }
 
   async onBuyClick(): Promise<void> {
-    let sender;
-    sender = (await this.web3.eth.requestAccounts())[0];
-
-    this.marketContract = new this.web3.eth.Contract(
-      marketplace_contract_abi as any,
-      this.marketplace_address
-    );
-
-    // console.log('owner', await this.marketContract.methods.owner().call());
-
-    const uint256id = this.web3.eth.abi.encodeParameter('uint256', this.nft.id);
     const that = this;
     // send buy transaction
-    this.marketContract.methods
-      .buy(uint256id)
+    this.marketPlaceService.marketContract.methods
+      .buy(this.uint256id)
       .send({
-        from: sender,
-        value: this.web3.utils.toWei(this.eth_price, 'ether'),
+        from: this.sender,
+        value: this.marketPlaceService.web3.utils.toWei(
+          this.eth_price,
+          'ether'
+        ),
       })
       .then(function (res: any) {
         console.log(res.transactionHash);
         that.nftBought.emit({ hash: res.transactionHash, id: that.nft.id });
       });
   }
+
   async onGiveBack(): Promise<void> {
-    console.log('give back');
+    const that = this;
+    // send give back transaction
+    this.marketPlaceService.nftContract.methods
+      .approve(this.marketPlaceService.marketplaceAddress, this.nft.id)
+      .send({
+        from: this.sender,
+      })
+      .then((res: any) => {
+        console.log(`Approve done ${res.transactionHash}`);
+        this.marketPlaceService.nftContract.methods
+          .safeTransferFrom(
+            this.sender,
+            this.marketPlaceService.marketplaceAddress,
+            this.nft.id
+          )
+          .send({
+            from: this.sender,
+          })
+          .then((res: any) => {
+            that.nftGivenBack.emit({
+              hash: res.transactionHash,
+              id: that.nft.id,
+            });
+          });
+      });
   }
 }

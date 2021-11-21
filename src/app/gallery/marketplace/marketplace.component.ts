@@ -43,7 +43,6 @@ export class MarketplaceComponent implements OnInit {
   async getMarketPlaceNfts(): Promise<void> {
     let items = [];
     for (let i = 1; i <= 5; i++) {
-      console.log('in if');
       let ownerOfI = await this.forestartContract.methods.ownerOf(i).call();
 
       if (ownerOfI === this.marketplace_address) {

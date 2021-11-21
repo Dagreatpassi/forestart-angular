@@ -10,7 +10,7 @@
     </p>
   </div>
 
-  <div class="mt-8 ml-8">
+  <div class="mt-8 mx-8">
     <div *ngIf="nftsLoading; else displayNFTs">
       <div class="text-center pt-20" style="height: 280px; width: 100%">
         <div *ngIf="metaMaskExists; else cantLoad" class="lds-ellipsis">
@@ -45,7 +45,10 @@
       </div>
     </div>
     <ng-template #displayNFTs>
-      <div class="flex flex-row overflow-x-scroll">
+      <div
+        class="flex flex-row overflow-x-scroll"
+        *ngIf="marketPlaceNfts.length > 0; else emptyMarketPlace"
+      >
         <div *ngFor="let nft of marketPlaceNfts; index as i">
           <app-nft-card
             [buyEnabled]="buyEnabled"
@@ -57,6 +60,11 @@
           ></app-nft-card>
         </div>
       </div>
+      <ng-template #emptyMarketPlace>
+        <div class="text-center text-warning h-11">
+          All of our NFTS are currently sold.
+        </div>
+      </ng-template>
     </ng-template>
   </div>
   <div class="mt-12 flex flex-row items-center justify-center mx-6">
